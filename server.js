@@ -1,15 +1,18 @@
 /// <reference path="_reference.ts" />
 //creating express app
 var express = require('express');
+var path = require('path');
 var app = express();
 var port = process.env.port || 3000;
 //main route
 app.get('/', function (req, res, next) {
-    res.send('Hello Express!');
+    //res.send('Hello Express!');
+    res.sendFile(path.join(__dirname, "Public", "index.html"));
 });
 //Route for info page
 app.get('/info', function (req, res) {
-    res.send('Your custom info page goes here');
+    //res.send('Your custom info page goes here');
+    res.sendFile(path.join(__dirname, "Public", "info.html"));
 });
 app.listen(port, function () {
     console.log("app Server Started... on port: " + port);
